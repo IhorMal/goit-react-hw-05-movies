@@ -1,4 +1,4 @@
-import css from './App.module.css'
+// import css from './App.module.css'
 
 import { Home } from 'page/Home';
 // import styled from "styled-components";
@@ -21,23 +21,17 @@ import { SharedLayout } from './SharedLayout';
 // `;
 
 export const App = () => {
+
   return (
-    <div className={css.app}>
-      {/* <nav className={css.nav}>
-      <StyledLink to='/' and>Home</StyledLink>
-      <StyledLink to='/movies'>Movies</StyledLink>
-      </nav> */}
-      <Routes>
-        <Route path="/" element={<SharedLayout />}>
-          <Route index element={<Home />} />
-          <Route path="/movies" element={<Movies />} />
-        </Route>
-        <Route path="/movies/:id" element={<MovieDetails />}>
+    <Routes >
+      <Route path="/" element={< SharedLayout />}>
+        <Route index element={<Home />} />
+        <Route path="movies" element={<Movies />} />
+        <Route path="movies/:id" element={<MovieDetails />}>
           <Route path='cast' element={<Cast />}></Route>
           <Route path='reviews' element={<Reviews />}></Route>
         </Route>
-       
-      </Routes>
-    </div>
+      </Route>
+    </Routes>
   );
 };
