@@ -1,18 +1,19 @@
 import { Suspense } from "react";
-import { Outlet, Link } from 'react-router-dom'
+import { Outlet, NavLink } from 'react-router-dom'
 import css from './App.module.css'
-// import styled from "styled-components";
+import styled from "styled-components";
 
 
 
-// const StyledLink = styled(NavLink)`
-//   color: black;
-//    padding-left: 20px;
-//    text-decoration: none;
-//   &.active {
-//     color: red;
-//   }
-// `;
+const StyledLink = styled(NavLink)`
+  color: black;
+   padding-left: 20px;
+   text-decoration: none;
+
+  &.active {
+    color: red;
+  }
+`;
 
 export const SharedLayout = () => {
 
@@ -20,8 +21,8 @@ export const SharedLayout = () => {
         <>
             <header>
                 <nav className={css.nav}>
-                    <Link to='/goit-react-hw-05-movies' >Home</Link>
-                    <Link to='/goit-react-hw-05-movies/movies'>Movies</Link>
+                    <StyledLink to="/">Home</StyledLink>
+                    <StyledLink to="/movies">Movies</StyledLink>
                 </nav>
             </header>
             <Suspense fallback={<div>Loading...</div>}>

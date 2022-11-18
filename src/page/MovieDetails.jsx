@@ -1,16 +1,16 @@
 import css from './MovieDetails.module.css'
 
-import { useParams, Link, Outlet } from "react-router-dom";
+import { useParams, Link, Outlet, useLocation } from "react-router-dom";
 import { useState, useEffect} from 'react'
 import { movieDetails } from "../Requests/Api"
 
-export const MovieDetails = () => {
+const MovieDetails = () => {
     const { id } = useParams();
     const [film, setFilm] = useState(null)
-    
+     const location = useLocation();
     useEffect(() => {
         movieDetails(id).then(par => {
-            console.log(par)
+          
             setFilm({
                 title: par.title,
                 path: par.poster_path,
@@ -25,9 +25,10 @@ export const MovieDetails = () => {
     }
     const { title, path, average, overview, genres } = film;
  
-
+    console.log(location)
     return (
         <div>
+            {/* <Link to={ location.state.from.pathname }>Bagk</Link> */}
             <div className={css.conteiner}>
                 <img src={`https://image.tmdb.org/t/p/w300/${path}`} alt="" />
                 <div className={css.film_description} >
@@ -57,3 +58,5 @@ export const MovieDetails = () => {
         </div>
     )
 };
+
+export default MovieDetails;

@@ -1,8 +1,8 @@
 import { useParams } from "react-router-dom";
-import { useState, useEffect} from 'react'
+import { useState, useEffect, Suspense} from 'react'
 import { movieCredits } from "../Requests/Api"
-
-export const Cast = () => {
+import { Outlet } from "react-router-dom";
+const Cast = () => {
     const [cast, setCast] = useState(null);
     const { id } = useParams();
 
@@ -35,7 +35,13 @@ export const Cast = () => {
                         )
                     })}
                 </ul>            
-            ) : (<p>There is no information</p>)}         
+            ) : (<p>There is no information</p>)}   
+            
+            <Suspense fallback={<div>Loading subpage...</div>}>
+        <Outlet />
+      </Suspense>
         </div>    
     )
 };
+
+export default Cast;

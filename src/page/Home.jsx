@@ -1,14 +1,14 @@
 import {ApiPoporali} from '../Requests/Api'
 import { useEffect, useState } from 'react'
-import { Link, Outlet} from 'react-router-dom'
+import { Link, Outlet, useLocation} from 'react-router-dom'
 
 
 
-export const Home = () => {
+const Home = () => {
     const [state, setStayt] = useState(null);
+    const location = useLocation();
     useEffect(() => {
         ApiPoporali().then(red => {
-        console.log(red)
         setStayt(red.results)
     })
     }, [])
@@ -22,7 +22,7 @@ export const Home = () => {
                  {state.map(e => {
                 return (
                     <li key={e.id}>
-                        <Link to={`movies/${e.id}`}>${e.title}</Link>
+                        <Link to={`movies/${e.id}`}  state={{ from: location }}>${e.title}</Link>
                     </li>
                 )
             })}
@@ -32,3 +32,5 @@ export const Home = () => {
     )
 }
 
+
+export default Home;
