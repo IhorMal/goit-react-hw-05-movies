@@ -1,0 +1,17 @@
+.conteiner {
+  display: flex;
+  margin: 30px 20px;
+}
+
+.film_description {
+  margin-left: 40px;
+}
+
+.list_genres {
+  display: flex;
+  list-style: none;
+}
+
+.item_genres {
+  margin-left: 5px;
+}
