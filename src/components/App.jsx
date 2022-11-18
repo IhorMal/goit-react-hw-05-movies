@@ -1,16 +1,15 @@
-// import css from './App.module.css'
 
+import { SharedLayout } from './SharedLayout';
 import { Home } from 'page/Home';
-// import styled from "styled-components";
 import { Movies } from 'page/Movies';
 import { MovieDetails } from 'page/MovieDetails';
-// import { NotFound } from 'page/NotFound';
 import { Route, Routes } from 'react-router-dom'
 import { Cast } from './Cast';
 import { Reviews } from './Reviews';
-import { SharedLayout } from './SharedLayout';
 
-
+// import css from './App.module.css'
+// import { NotFound } from 'page/NotFound';
+// import styled from "styled-components";
 // const StyledLink = styled(NavLink)`
 //   color: black;
 //    padding-left: 20px;
@@ -23,8 +22,8 @@ import { SharedLayout } from './SharedLayout';
 export const App = () => {
 
   return (
-    <Routes >
-      <Route path="/" element={< SharedLayout />}>
+    <Routes>
+      <Route path="/" element={<SharedLayout/>}>
         <Route index element={<Home />} />
         <Route path="movies" element={<Movies />} />
         <Route path="movies/:id" element={<MovieDetails />}>
