@@ -19,7 +19,7 @@ export const SharedLayout = () => {
         <div>
             <header>
                 <nav className={css.nav}>
-                    <Link to='/' and>Home</Link>
+                    <Link to='/' >Home</Link>
                     <Link to='/movies'>Movies</Link>
                 </nav>
             </header>
