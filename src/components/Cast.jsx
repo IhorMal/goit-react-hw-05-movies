@@ -5,19 +5,19 @@ import { Outlet } from "react-router-dom";
 const Cast = () => {
     const [cast, setCast] = useState(null);
     const { id } = useParams();
-
+   
     useEffect(() => {
         movieCredits(id).then(pro => {
-            console.log(pro)
+       
             setCast(pro.cast);
         });
         
     }, [id])
-
+  
     if (!cast) {
         return null
     }
-
+    
     return (
         <div>      
             {cast.length !== 0 ? (

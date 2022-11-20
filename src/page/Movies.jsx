@@ -2,34 +2,39 @@
 import {LisMovies} from "components/lisMovies";
 import { useState, useEffect, Suspense } from 'react';
 import { searchMovies } from '../Requests/Api';
-import { Outlet } from "react-router-dom";
+import { Outlet, useSearchParams} from "react-router-dom";
 import {Form} from "components/Form";
 
 
 
 const Movies = () => {
-    const [name, setName] = useState('');
-    const [nameFilms, setNameFilms] = useState([])
-      
+    const [nameFilms, setNameFilms] = useState([]);
+    const [searchParams, setSearchParams] = useSearchParams();
+    function changeFiltet(value) {
+        setSearchParams(value !== '' ? { query: value } : {});
+    }
 
+    const names = searchParams.get("query") ?? "";
+   
     useEffect(() => {
-        if (name === '') {
+        if (names === '') {
             return
         }
-        searchMovies(name).then(pro => {
-         
+        searchMovies(names).then(pro => {
+            
             setNameFilms(pro.results)
-        
+           
         })
 
-    }, [name])
+    }, [names])
     
     if (nameFilms === undefined) {
         return
     }
+    
     return (
         <div>
-            <Form get={setName}></Form>
+            <Form  onChange={changeFiltet}></Form>
             {nameFilms.length !== 0 && <LisMovies movies={nameFilms} />}
             <Suspense fallback={<div>Loading subpage...</div>}>
                 <Outlet />

@@ -1,9 +1,10 @@
 
-export const Form = ({get}) => {
+export const Form = ({onChange}) => {
     function names(e) {
-        e.preventDefault()
-        get(e.target.nameFilm.value) 
+    e.preventDefault()
+       onChange(e.target.nameFilm.value) 
     }
+
     return (
         <div>
             <form type="submit" onSubmit={names} action="">

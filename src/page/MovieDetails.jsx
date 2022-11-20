@@ -7,7 +7,7 @@ import { movieDetails } from "../Requests/Api"
 const MovieDetails = () => {
     const { id } = useParams();
     const [film, setFilm] = useState(null)
-     const location = useLocation();
+    const location = useLocation();
     useEffect(() => {
         movieDetails(id).then(par => {
           
@@ -19,16 +19,16 @@ const MovieDetails = () => {
                 genres: par.genres
             })
         })
+        
     }, [id])
     if (!film) {
         return null
     }
     const { title, path, average, overview, genres } = film;
- 
-    console.log(location)
+   
     return (
         <div>
-            {/* <Link to={ location.state.from.pathname }>Bagk</Link> */}
+            <Link to={location.state.from}>Back</Link>
             <div className={css.conteiner}>
                 <img src={`https://image.tmdb.org/t/p/w300/${path}`} alt="" />
                 <div className={css.film_description} >
@@ -50,8 +50,8 @@ const MovieDetails = () => {
             <div>
                 <p>Additional information</p>
                 <ul>
-                    <li><Link to='cast'>Cast</Link></li>
-                    <li><Link to='reviews'>Reviews</Link></li>
+                    <li><Link to='cast' state={{from: location.state.from}}>Cast</Link></li>
+                    <li><Link to='reviews' state={{ from: location.state.from }}>Reviews</Link></li>
                 </ul>
             </div>
             <Outlet />

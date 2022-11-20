@@ -1,7 +1,7 @@
 export const NotFound = () => {
     return (
         <div>
-            не має такої сторінки
+           <p>This page no longer exists</p>
         </div>
     )
 }
